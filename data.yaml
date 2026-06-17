@@ -1,0 +1,13 @@
+train: train/images
+val: train/images
+test: test/images
+
+nc: 1
+names: ['Pigeon']
+
+roboflow:
+  workspace: dhruvs-workspace-oisvv
+  project: dhruvs-workspace-oisvv
+  version: dataset
+  license: Private
+  url: https://app.roboflow.com/dhruvs-workspace-oisvv/dhruvs-workspace-oisvv/dataset

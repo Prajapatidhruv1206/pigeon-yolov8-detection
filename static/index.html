@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pigeons Detection</title>
+    <!-- Use a modern sans-serif font like Inter to match the dashboard look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <!-- Left Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            <!-- Dummy Logo icon -->
+            <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+        </div>
+        <div class="sidebar-nav">
+            <div class="nav-item">
+                <span class="nav-icon">📊</span>
+                <span class="nav-label">Dataset</span>
+            </div>
+            <div class="nav-item">
+                <span class="nav-icon">🔄</span>
+                <span class="nav-label">Versions</span>
+            </div>
+            <div class="nav-item active">
+                <span class="nav-icon">🧠</span>
+                <span class="nav-label">Models</span>
+            </div>
+            <div class="nav-item">
+                <span class="nav-icon">🚀</span>
+                <span class="nav-label">Deploy</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <!-- Top Header -->
+        <header class="top-header">
+            <div class="header-title">
+                <span class="back-arrow">←</span>
+                <h1>Pigeons Detection 1</h1>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-outline">
+                    <span class="icon">📈</span> Visualize
+                </button>
+                <button class="btn btn-outline">
+                    <span class="icon">⬇️</span> Download Weights
+                </button>
+                <button class="btn btn-primary">
+                    <span class="icon">🚀</span> Deploy Model
+                </button>
+            </div>
+        </header>
+
+        <!-- Model Details Panel -->
+        <section class="model-details-panel">
+            <div class="details-grid">
+                <div class="detail-item">
+                    <div class="detail-label">Model URL:</div>
+                    <div class="detail-value">pigeons-detection...</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Checkpoint:</div>
+                    <div class="detail-value">COCOs</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Dataset Version:</div>
+                    <div class="detail-value text-purple">pigeon count ↗</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Updated On:</div>
+                    <div class="detail-value"><span class="icon text-green">✅</span> 5/1/26, 11:29 AM</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Model Type:</div>
+                    <div class="detail-value">YOLOv8 Object Detection<br><span class="text-gray">(Accurate)</span></div>
+                </div>
+            </div>
+            <div class="metrics-panel">
+                <div class="metrics-header">
+                    <span>Metrics ℹ️</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked>
+                        <span class="slider round"></span>
+                        <span class="toggle-label">Industry Standard</span>
+                    </label>
+                </div>
+                <div class="metrics-bars">
+                    <!-- Dummy metrics to match screenshot -->
+                    <div class="metric-col">
+                        <div class="metric-val">78.4%</div>
+                        <div class="metric-bar-container"><div class="metric-bar fill-purple" style="height: 78.4%"></div></div>
+                        <div class="metric-name">mAP@50</div>
+                    </div>
+                    <div class="metric-col">
+                        <div class="metric-val">87.8%</div>
+                        <div class="metric-bar-container"><div class="metric-bar fill-blue" style="height: 87.8%"></div></div>
+                        <div class="metric-name">Precision</div>
+                    </div>
+                    <div class="metric-col">
+                        <div class="metric-val">75.8%</div>
+                        <div class="metric-bar-container"><div class="metric-bar fill-yellow" style="height: 75.8%"></div></div>
+                        <div class="metric-name">Recall</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Workspace Area -->
+        <section class="workspace">
+            <!-- Left Column: Test Set -->
+            <div class="workspace-left">
+                <h3 class="section-title">Test Set</h3>
+                <div class="thumbnails-grid" id="thumbnailsGrid">
+                    <!-- Images will be added here -->
+                </div>
+                
+                <div class="upload-area" id="uploadArea">
+                    <input type="file" id="fileInput" accept="image/*" hidden>
+                    <div class="upload-content">
+                        <h4>Drop Files or</h4>
+                        <button class="btn btn-outline btn-sm">+ Select Files</button>
+                    </div>
+                </div>
+                <div class="loader-container hidden" id="loader">
+                    <div class="spinner"></div>
+                    <p>Analyzing...</p>
+                </div>
+            </div>
+
+            <!-- Center Column: Image Viewer -->
+            <div class="workspace-center">
+                <div class="image-viewer">
+                    <img id="resultImage" src="" alt="Detection Result" style="display: none;">
+                    <div class="placeholder-text" id="imagePlaceholder">Upload an image to see predictions</div>
+                </div>
+            </div>
+
+            <!-- Right Column: Visualizations & Output -->
+            <div class="workspace-right">
+                <h3 class="section-title">Model Visualizations</h3>
+                
+                <div class="controls-group">
+                    <div class="control-item">
+                        <div class="control-header">
+                            <label>Confidence Threshold:</label>
+                            <span id="confValue">50%</span>
+                        </div>
+                        <input type="range" min="0" max="100" value="50" class="slider-input" id="confSlider">
+                    </div>
+                    
+                    <div class="control-item">
+                        <div class="control-header">
+                            <label>Overlap Threshold:</label>
+                            <span id="iouValue">50%</span>
+                        </div>
+                        <input type="range" min="0" max="100" value="50" class="slider-input" id="iouSlider">
+                    </div>
+                </div>
+
+                <div class="output-section">
+                    <h3 class="section-title">Output</h3>
+                    <pre class="json-output" id="jsonOutput">{
+  "predictions": []
+}</pre>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+.eggs/
+
+# Virtual environments
+venv/
+env/
+.env
+.venv/
+
+# Uploaded images (user data, not code)
+uploads/
+
+# Prediction outputs (generated at runtime)
+runs/detect/predict_web/
+
+# Dataset images (large files — host on Roboflow or similar)
+train/images/
+valid/images/
+test/images/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Jupyter
+.ipynb_checkpoints/
